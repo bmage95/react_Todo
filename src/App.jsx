@@ -1,33 +1,18 @@
-import Form from "./components/Form";                 
-import FilterButton from "./components/FilterButton";
-import Todo from "./components/Todo";
+import React from "react";
+import TodoList from "./components/TodoList";
 
-function App(props) {
-  const taskList = props.tasks?.map((task) => (
-    <Todo
-      id={task.id}
-      name={task.name}
-      completed={task.completed}
-      key={task.id}
-    />
-  ));
-  return (
-    <div className="todoapp stack-large">
-      <h1>TodoMatic</h1>
-      <Form />
-      <div className="filters btn-group stack-exception">
-        <FilterButton />
-        <FilterButton />
-        
-      </div>
-      <h2 id="list-heading">3 tasks remaining</h2>
-      <ul
-        role="list"
-        className="todo-list stack-large stack-exception"
-        aria-labelledby="list-heading">
-        {taskList}
-      </ul>
-    </div>
+function App(){
+  const DATA = [
+    {id:1,name:"Aditya",checked:false},
+    {id:2,name:"Rushi",checked:true},
+    {id:3,name:"Vedika",checked:false}
+  ]
+
+  return(    
+    <div className="App">
+      <h1>TodoList</h1>
+    <TodoList task={DATA}/>
+  </div>
   );
 }
 
