@@ -1,13 +1,14 @@
 import React from "react";
+import "./index.css"
 
 function TodoList(props) {
 
     const handleEdit = (id) => {
-        const taskToEdit = props.DATA.find(task => task.id === id);     //finding via id
+        const taskToEdit = props.task.find(task => task.id === id);     //finding via id
       
         const edited_name = window.prompt('Edit task name:', taskToEdit.name);      //prompt for input
 
-        const new_arr = props.DATA.map(task => {        //copy and update specific name
+        const new_arr = props.task.map(task => {        //copy and update specific name
           if (task.id === id) {
             return { ...task, name: edited_name };          //skips rest except name change
           }
@@ -19,14 +20,14 @@ function TodoList(props) {
 
     const handleDelete = (id) => {
 
-        const new_arr = props.DATA.filter(task => task.id !== id);  //use filter to iterate over ids and skips one that we dont want and keep rest in new array
+        const new_arr = props.task.filter(task => task.id !== id);  //use filter to iterate over ids and skips one that we dont want and keep rest in new array
 
         props.setDATA(new_arr); // updated
     };
 
     const handleComplete = (id) => {
 
-        const new_arr = props.DATA.map(task => {
+        const new_arr = props.task.map(task => {
           if (task.id === id) {
             return { ...task, checked: !task.checked };     //same as above, flips boolean value
           }
@@ -39,7 +40,10 @@ function TodoList(props) {
 
     const PreExistingList = props.task?.map((task) => (
       <li key={task.id}>
-        {task.name} - {task.checked ? "Checked" : "Not Checked"}
+        <span>
+      {task.name} - {task.checked ? "Checked" : "Not Checked"}
+
+    </span>
 
         <button onClick={() => handleEdit(task.id)}>Edit</button>
         <button onClick={() => handleDelete(task.id)}>Delete</button>
