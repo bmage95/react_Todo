@@ -4,17 +4,17 @@ import "./index.css"
 function TodoList(props) {
 
     const handleEdit = (id) => {
-        const taskToEdit = props.task.find(task => task.id === id);     //finding via id
+        const taskToEdit = props.task.find(task => task.id === id);              //finding via id 
       
-        const edited_name = window.prompt('Edit task name:', taskToEdit.name);      //prompt for input
+        const edited_name = window.prompt('Edit task name:', taskToEdit.name);  //prompt for input
 
-        const new_arr = props.task.map(task => {        //copy and update specific name
+        const new_arr = props.task.map(task => {                       //copy and update specific name
           if (task.id === id) {
-            return { ...task, name: edited_name };          //skips rest except name change
+            return { ...task, name: edited_name };                     //skips rest except name change
           }
           return task;
         });
-      
+       
         props.setDATA(new_arr); //updated
     };
 
@@ -33,6 +33,7 @@ function TodoList(props) {
           }
           return task;
         });
+        
       
         // updated
         props.setDATA(new_arr); 
